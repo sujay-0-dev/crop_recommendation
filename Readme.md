@@ -18,12 +18,14 @@ A production-ready FastAPI application that provides ML-powered crop recommendat
 ### Local Development
 
 1. **Clone the repository**
+
 ```bash
-git clone <repository-url>
-cd crop-recommendation-api
+git clone <https://github.com/Dhritikrishna123/crop_recommendation>
+cd crop_recommendation
 ```
 
 2. **Install dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -33,11 +35,13 @@ pip install -r requirements.txt
    - The CSV should have columns: N, P, K, temperature, humidity, ph, rainfall, label
 
 4. **Train the model**
+
 ```bash
 python model_training.py
 ```
 
 5. **Run the API**
+
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
@@ -45,11 +49,13 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ### Docker Deployment
 
 1. **Build and run with Docker Compose**
+
 ```bash
 docker-compose up --build
 ```
 
 2. **Or build and run with Docker**
+
 ```bash
 docker build -t crop-recommendation-api .
 docker run -p 8000:8000 -v ./data:/app/data -v ./models:/app/models crop-recommendation-api
@@ -58,8 +64,9 @@ docker run -p 8000:8000 -v ./data:/app/data -v ./models:/app/models crop-recomme
 ## 📚 API Documentation
 
 Once the server is running, visit:
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
+
+- **Swagger UI**: <http://localhost:8000/docs>
+- **ReDoc**: <http://localhost:8000/redoc>
 
 ## 🛠 API Endpoints
 
@@ -82,6 +89,7 @@ Once the server is running, visit:
 ## 📊 Supported Crops
 
 The model can recommend from 22 different crops:
+
 - **Cereals**: rice, maize
 - **Legumes**: chickpea, kidneybeans, pigeonpeas, mothbeans, mungbean, blackgram, lentil
 - **Fruits**: pomegranate, banana, mango, grapes, watermelon, muskmelon, apple, orange, papaya, coconut
@@ -118,6 +126,7 @@ curl -X POST "http://localhost:8000/predict" \
 ```
 
 **Response:**
+
 ```json
 {
   "predicted_crop": "rice",
@@ -183,6 +192,7 @@ crop-recommendation-api/
 ### Feature Engineering
 
 The model uses several engineered features:
+
 - **NPK**: Average of Nitrogen, Phosphorus, and Potassium
 - **THI**: Temperature-Humidity Index
 - **Rainfall Level**: Categorized rainfall (Low/Medium/High/Very High)
@@ -203,6 +213,7 @@ MODEL_PATH=/app/models/crop_recommendation_model.joblib
 ### Health Monitoring
 
 The API includes comprehensive health checks:
+
 - Model loading status
 - Service availability
 - Response time monitoring
@@ -221,11 +232,13 @@ Monitor at: `GET /health`
 ### Manual Testing
 
 Test the health endpoint:
+
 ```bash
 curl http://localhost:8000/health
 ```
 
 Test a prediction:
+
 ```bash
 curl -X POST "http://localhost:8000/predict" \
 -H "Content-Type: application/json" \
@@ -235,6 +248,7 @@ curl -X POST "http://localhost:8000/predict" \
 ### Load Testing
 
 Use tools like Apache Bench or wrk for load testing:
+
 ```bash
 # Install wrk and test
 wrk -t12 -c400 -d30s --latency http://localhost:8000/health
@@ -243,6 +257,7 @@ wrk -t12 -c400 -d30s --latency http://localhost:8000/health
 ## 🔧 Configuration
 
 Edit `config.py` to modify:
+
 - Model parameters
 - API settings
 - File paths
@@ -251,6 +266,7 @@ Edit `config.py` to modify:
 ## 📈 Monitoring & Logging
 
 The application includes:
+
 - Structured logging with Python's logging module
 - Request/response logging
 - Error tracking with stack traces
@@ -280,6 +296,7 @@ This project is licensed under the MIT License.
 ### Debug Mode
 
 Run with debug logging:
+
 ```bash
 LOG_LEVEL=debug uvicorn main:app --reload
 ```
@@ -287,6 +304,7 @@ LOG_LEVEL=debug uvicorn main:app --reload
 ### Docker Issues
 
 Check container logs:
+
 ```bash
 docker-compose logs -f crop-api
 ```
@@ -294,6 +312,7 @@ docker-compose logs -f crop-api
 ## 📞 Support
 
 For issues and questions:
+
 - Create an issue in the repository
 - Check the API documentation at `/docs`
 - Review the logs for error messages

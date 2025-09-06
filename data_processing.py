@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 import logging
 
-logging.basicConfig(level=logging.info)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class DataProcessor:

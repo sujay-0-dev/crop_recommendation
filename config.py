@@ -7,11 +7,11 @@ from pathlib import Path
 # Project Paths
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
-MODEL_DIR = BASE_DIR / "models"
+MODELS_DIR = BASE_DIR / "models"
 
 # Create directories if they don't exist
 DATA_DIR.mkdir(exist_ok=True)
-MODEL_DIR.mkdir(exist_ok=True)
+MODELS_DIR.mkdir(exist_ok=True)
 
 # Model Setting
 MODEL_CONFIG = {
@@ -20,7 +20,7 @@ MODEL_CONFIG = {
     "random_state":42,
     "xgboost_params": {
         "random_state":42,
-        "n_estimator":100,
+        "n_estimators":100,
         "learning_rate":0.1,
         "max_depth":6
     }

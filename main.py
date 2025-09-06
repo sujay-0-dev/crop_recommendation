@@ -232,14 +232,15 @@ async def general_exception_handler(request, exc):
     logger.error(f"Unhandled exception: {exc}")
     return HTTPException(status_code=500, detail="Internal server error")
 
+import uvicorn
+import os
 
 if __name__ == "__main__":
-    import uvicorn
-    
+    port = int(os.environ.get("PORT", 8080))  # Cloud Run sets PORT
     uvicorn.run(
         "main:app",
-        host=API_CONFIG["host"],
-        port=API_CONFIG["port"],
-        reload=True,
+        host="0.0.0.0",
+        port=port,
+        reload=False,      
         log_level="info"
     )

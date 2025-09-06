@@ -17,7 +17,7 @@ class CropPredictionRequest(BaseModel):
     rainfall: float = Field(..., ge=0, le=400, description="Rainfall in mm (0-400)")
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "N": 90,
                 "P": 42,
@@ -38,7 +38,7 @@ class CropPredictionResponse(BaseModel):
     all_probabilities: dict = Field(..., description="Probabilities for all crops")
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "predicted_crop": "rice",
                 "confidence": 0.95,
@@ -76,6 +76,9 @@ class HealthResponse(BaseModel):
     message: str
     model_loaded: bool
     timestamp: str
+    
+    class Config:
+        protected_namespaces = ()
 
 
 class ModelInfoResponse(BaseModel):
@@ -86,3 +89,6 @@ class ModelInfoResponse(BaseModel):
     features: List[str]
     supported_crops: List[str]
     accuracy: Optional[float] = None
+    
+    class Config:
+        protected_namespaces = ()
