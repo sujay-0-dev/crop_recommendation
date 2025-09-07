@@ -1,6 +1,10 @@
 # Dependencies
 /node_modules
 
+# Build output
+/dist
+/build
+
 # Logs
 logs
 *.log
@@ -9,20 +13,24 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Vite-specific cache and files
+.vite
+.vite-ssg-temp
+dist-ssr
+
 # Environment variables - VERY IMPORTANT for security
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*.local
+
+# Test reports
+/coverage
+.nycrc
+.nyc_output
 
 # Operating System files
 .DS_Store
 Thumbs.db
-
-# Optional build output
-/dist
-/build
 
 # Optional IDE directory
 .idea/
